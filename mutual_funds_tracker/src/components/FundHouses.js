@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fundHousesData } from "./FundHousesData.js";
+import { fundHousesData } from "../data/FundHousesData.js";
 import Schemes from "./Schemes";
 
 function FundHouses() {
