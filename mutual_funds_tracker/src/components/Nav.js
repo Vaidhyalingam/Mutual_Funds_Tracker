@@ -9,11 +9,20 @@ export default function Nav() {
     onAuthStateChanged(auth, (user) => setCurrentUser(user));
   }, []);
   return (
-    <div>
-      <a href="/signup">Sign Up </a>
-      <a href="/login">Sign In</a>
-      <label>Current User: {currentUser?.email}</label>
-      <a href="/logout">Log Out</a>
-    </div>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <a class="navbar-brand" href="/">
+        Home
+      </a>
+      <a class="navbar-brand" href="/signup">
+        Sign Up
+      </a>
+      <a class="navbar-brand" href="/login">
+        Sign In
+      </a>
+      <a class="navbar-brand" href="/logout">
+        Log Out
+      </a>
+      <label class="d-flex">Current User: {currentUser?.uid}</label>
+    </nav>
   );
 }

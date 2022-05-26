@@ -9,9 +9,11 @@ function FundHouses() {
   return (
     <div>
       <div>
-        <p>Hello World from Schemes</p>
-        <label>Fund House: </label>
-        <select onChange={(e) => setSelectedHouse(e.target.value)}>
+        <label class="form-label">Fund House: </label>
+        <select
+          onChange={(e) => setSelectedHouse(e.target.value)}
+          class="form-select form-select-sm"
+        >
           {fundHousesData.map((fundHouse) => (
             <option key={id2++}>{fundHouse}</option>
           ))}

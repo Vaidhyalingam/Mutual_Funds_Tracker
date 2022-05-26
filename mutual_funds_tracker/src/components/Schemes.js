@@ -45,8 +45,11 @@ function Schemes({ selectedHouse }) {
   return (
     <div>
       <div>
-        <label>Scheme Name: </label>
-        <select onChange={(e) => setSelectedOption(e.target.value)}>
+        <label class="form-label">Scheme Name: </label>
+        <select
+          onChange={(e) => setSelectedOption(e.target.value)}
+          class="form-select form-select-sm"
+        >
           {scheme.map((fundHouse) => (
             <option key={id++} value={fundHouse.schemeCode}>
               {fundHouse.schemeName}
