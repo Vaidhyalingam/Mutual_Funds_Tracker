@@ -1,10 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fundHousesData } from "../data/FundHousesData.js";
 import Schemes from "./Schemes";
+import { auth, db } from "../firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
 function FundHouses() {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => setCurrentUser(user));
+  }, []);
+
   const [selectedHouse, setSelectedHouse] = useState();
   var id2 = 0;
+
+  async function handleDBSubmit(e) {
+    const usersCollectionRef = doc(db, "users", currentUser?.email);
+    console.log("Hi Da");
+    await setDoc(usersCollectionRef, {
+      name: "Manoj",
+      age: Number(13),
+      selectedHouse: selectedHouse,
+    });
+  }
 
   return (
     <div>
@@ -18,6 +45,9 @@ function FundHouses() {
         </select>
       </div>
       <Schemes selectedHouse={selectedHouse} />
+
+      <p>FireStore</p>
+      <button onClick={handleDBSubmit}>Submit</button>
     </div>
   );
 }
